@@ -50,7 +50,16 @@ function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case 'remove':
-      // ... id
+      removeContact(id)
+        .then(contact => {
+          if (contact) {
+            console.log(chalk.green('Contact has been removed'));
+            console.log(contact);
+          } else {
+            console.log(chalk.red('Contact not been removed'));
+          }
+        })
+        .catch(console.error);
       break;
 
     default:
